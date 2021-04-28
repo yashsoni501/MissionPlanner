@@ -2412,7 +2412,7 @@ namespace MissionPlanner
                             }
                         }
                     }
-                    Thread.Sleep(20);
+                    Thread.Sleep(40);
                 }
                 catch
                 {
@@ -2745,7 +2745,8 @@ namespace MissionPlanner
                             linkqualitytime = DateTime.Now;
 
                             // force redraw if there are no other packets are being read
-                            GCSViews.FlightData.myhud.Invalidate();
+                            if (MainV2.comPort.logreadmode || comPort.BaseStream.IsOpen)
+                                GCSViews.FlightData.myhud.Invalidate();
                         }
                     }
 
