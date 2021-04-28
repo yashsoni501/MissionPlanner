@@ -18,6 +18,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using MissionPlanner.ArduPilot.Mavlink;
 using Timer = System.Timers.Timer;
 
 namespace MissionPlanner
@@ -441,6 +442,18 @@ namespace MissionPlanner
             _mavlink2signed = 0;
 
             AIS.Start(this);
+
+            // new hearbeat detected
+            MAVDetected += (sender, tuple) =>
+            {
+                // check for a camera
+                if (tuple.Item2 >= (byte)MAVLink.MAV_COMPONENT.MAV_COMP_ID_CAMERA &&
+                    tuple.Item2 <= (byte)MAV_COMPONENT.MAV_COMP_ID_CAMERA6)
+                {
+                    MAVlist[tuple.Item1, tuple.Item2].Camera = new CameraProtocol();
+                    MAVlist[tuple.Item1, tuple.Item2].Camera.StartID(MAVlist[tuple.Item1, tuple.Item2]);
+                }
+            };
         }
 
         public MAVLinkInterface(Stream logfileStream)
