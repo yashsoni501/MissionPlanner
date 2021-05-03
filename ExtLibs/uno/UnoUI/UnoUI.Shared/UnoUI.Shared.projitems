@@ -372,6 +372,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)test\MissionPlanner.GCSViews.FlightPlanner.xaml.cs">
       <DependentUpon>MissionPlanner.GCSViews.FlightPlanner.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)test\MissionPlanner.GCSViews.FlightPlanner2.xaml.cs">
+      <DependentUpon>MissionPlanner.GCSViews.FlightPlanner2.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)test\MissionPlanner.GCSViews.Help.xaml.cs">
       <DependentUpon>MissionPlanner.GCSViews.Help.xaml</DependentUpon>
@@ -937,6 +939,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)test\MissionPlanner.GCSViews.FlightPlanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)test\MissionPlanner.GCSViews.FlightPlanner2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

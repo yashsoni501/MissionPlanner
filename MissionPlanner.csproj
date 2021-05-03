@@ -1005,6 +1005,9 @@
     <Compile Include="GCSViews\FlightPlanner.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GCSViews\FlightPlanner2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="GCSViews\Help.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1358,6 +1361,9 @@
     </Compile>
     <Compile Include="GCSViews\FlightPlanner.Designer.cs">
       <DependentUpon>FlightPlanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GCSViews\FlightPlanner2.Designer.cs">
+      <DependentUpon>FlightPlanner2.cs</DependentUpon>
     </Compile>
     <Compile Include="GCSViews\Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
@@ -2283,6 +2289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\FlightPlanner.resx">
       <DependentUpon>FlightPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GCSViews\FlightPlanner2.resx">
+      <DependentUpon>FlightPlanner2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\FlightPlanner.ar.resx">
       <DependentUpon>FlightPlanner.cs</DependentUpon>

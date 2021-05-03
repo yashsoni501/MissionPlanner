@@ -45,6 +45,7 @@ namespace MissionPlanner
             this.connectionListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFlightData = new System.Windows.Forms.ToolStripButton();
             this.MenuFlightPlanner = new System.Windows.Forms.ToolStripButton();
+            this.MenuFlightPlanner2 = new System.Windows.Forms.ToolStripButton();
             this.MenuInitConfig = new System.Windows.Forms.ToolStripButton();
             this.MenuConfigTune = new System.Windows.Forms.ToolStripButton();
             this.MenuSimulation = new System.Windows.Forms.ToolStripButton();
@@ -69,6 +70,7 @@ namespace MissionPlanner
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuFlightData,
             this.MenuFlightPlanner,
+            this.MenuFlightPlanner2,
             this.MenuInitConfig,
             this.MenuConfigTune,
             this.MenuSimulation,
@@ -136,10 +138,15 @@ namespace MissionPlanner
             // MenuFlightPlanner
             // 
             this.MenuFlightPlanner.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.MenuFlightPlanner2.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuFlightPlanner, "MenuFlightPlanner");
+            resources.ApplyResources(this.MenuFlightPlanner2, "MenuFlightPlanner2");
             this.MenuFlightPlanner.Margin = new System.Windows.Forms.Padding(0);
+            this.MenuFlightPlanner2.Margin = new System.Windows.Forms.Padding(0);
             this.MenuFlightPlanner.Name = "MenuFlightPlanner";
+            this.MenuFlightPlanner2.Name = "MenuFlightPlanner2";
             this.MenuFlightPlanner.Click += new System.EventHandler(this.MenuFlightPlanner_Click);
+            this.MenuFlightPlanner2.Click += new System.EventHandler(this.MenuFlightPlanner2_Click);
             // 
             // MenuInitConfig
             // 
@@ -248,6 +255,7 @@ namespace MissionPlanner
 
         public System.Windows.Forms.ToolStripButton MenuFlightData;
         public System.Windows.Forms.ToolStripButton MenuFlightPlanner;
+        public System.Windows.Forms.ToolStripButton MenuFlightPlanner2;
         public System.Windows.Forms.ToolStripButton MenuInitConfig;
         public System.Windows.Forms.ToolStripButton MenuSimulation;
         public System.Windows.Forms.ToolStripButton MenuConfigTune;

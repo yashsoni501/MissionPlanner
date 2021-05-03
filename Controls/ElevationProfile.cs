@@ -23,12 +23,63 @@ namespace MissionPlanner.Controls
         int distance = 0;
         double homealt = 0;
         FlightPlanner.altmode altmode = FlightPlanner.altmode.Relative;
+        FlightPlanner2.altmode altmode2 = FlightPlanner2.altmode.Relative;
 
         public ElevationProfile(List<PointLatLngAlt> locs, double homealt, FlightPlanner.altmode altmode)
         {
             InitializeComponent();
 
             this.altmode = altmode;
+
+            planlocs = locs;
+
+            for (int a = 0; a < planlocs.Count; a++)
+            {
+                if (planlocs[a] == null || planlocs[a].Tag != null && planlocs[a].Tag.Contains("ROI"))
+                {
+                    planlocs.RemoveAt(a);
+                    a--;
+                }
+            }
+
+            if (planlocs.Count <= 1)
+            {
+                CustomMessageBox.Show("Please plan something first", Strings.ERROR);
+                return;
+            }
+
+            // get total distance
+            distance = 0;
+            PointLatLngAlt lastloc = null;
+            foreach (PointLatLngAlt loc in planlocs)
+            {
+                if (loc == null)
+                    continue;
+
+                if (lastloc != null)
+                {
+                    distance += (int)loc.GetDistance(lastloc);
+                }
+                lastloc = loc;
+            }
+
+            this.homealt = homealt;
+
+            Form frm = Common.LoadingBox("Loading", "using alt data");
+
+            gelocs = getGEAltPath(planlocs);
+
+            srtmlocs = getSRTMAltPath(planlocs);
+
+            frm.Close();
+
+            MissionPlanner.Utilities.Tracking.AddPage(this.GetType().ToString(), this.Text);
+        }
+        public ElevationProfile(List<PointLatLngAlt> locs, double homealt, FlightPlanner2.altmode altmode2)
+        {
+            InitializeComponent();
+
+            this.altmode2 = altmode2;
 
             planlocs = locs;
 
@@ -113,12 +164,12 @@ namespace MissionPlanner.Controls
                 }
 
                 // deal with at mode
-                if (altmode == FlightPlanner.altmode.Terrain)
+                if (altmode == FlightPlanner.altmode.Terrain || altmode2 == FlightPlanner2.altmode.Terrain)
                 {
                     list1 = list4terrain;
                     break;
                 }
-                else if (altmode == FlightPlanner.altmode.Relative)
+                else if (altmode == FlightPlanner.altmode.Relative || altmode2 == FlightPlanner2.altmode.Relative)
                 {
                     // already includes the home alt
                     list1.Add(a * CurrentState.multiplierdist, (planloc.Alt * CurrentState.multiplieralt), 0, planloc.Tag);
@@ -153,14 +204,14 @@ namespace MissionPlanner.Controls
                 if (last == null)
                 {
                     last = loc;
-                    if (altmode == FlightPlanner.altmode.Terrain)
+                    if (altmode == FlightPlanner.altmode.Terrain || altmode2 == FlightPlanner2.altmode.Terrain)
                         loc.Alt -= srtm.getAltitude(loc.Lat, loc.Lng).alt;
                     continue;
                 }
 
                 double dist = last.GetDistance(loc);
 
-                if (altmode == FlightPlanner.altmode.Terrain)
+                if (altmode == FlightPlanner.altmode.Terrain || altmode2 == FlightPlanner2.altmode.Terrain)
                     loc.Alt -= srtm.getAltitude(loc.Lat, loc.Lng).alt;
 
                 int points = (int)(dist / 10) + 1;

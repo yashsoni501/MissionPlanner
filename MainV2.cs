@@ -525,6 +525,7 @@ namespace MissionPlanner
         public GCSViews.FlightData FlightData;
 
         public GCSViews.FlightPlanner FlightPlanner;
+        public GCSViews.FlightPlanner2 FlightPlanner2;
         GCSViews.SITL Simulation;
 
         private Form connectionStatsForm;
@@ -661,6 +662,11 @@ namespace MissionPlanner
             {
                 //hide menu items
                 MainV2.instance.FlightPlanner.updateDisplayView();
+            }
+            if (MainV2.instance.FlightPlanner2 != null)
+            {
+                //hide menu items
+                MainV2.instance.FlightPlanner2.updateDisplayView();
             }
         }
 
@@ -886,9 +892,12 @@ namespace MissionPlanner
                 Simulation = new GCSViews.SITL();
                 //Firmware = new GCSViews.Firmware();
                 //Terminal = new GCSViews.Terminal();
+                log.Info("Create FP2");
+                FlightPlanner2 = new GCSViews.FlightPlanner2();
 
                 FlightData.Width = MyView.Width;
                 FlightPlanner.Width = MyView.Width;
+                FlightPlanner2.Width = MyView.Width;
                 Simulation.Width = MyView.Width;
             }
             catch (ArgumentException e)
@@ -1204,6 +1213,7 @@ namespace MissionPlanner
 
             MenuFlightData.Image = displayicons.fd;
             MenuFlightPlanner.Image = displayicons.fp;
+            MenuFlightPlanner2.Image = displayicons.fp;
             MenuInitConfig.Image = displayicons.initsetup;
             MenuSimulation.Image = displayicons.sim;
             MenuConfigTune.Image = displayicons.config_tuning;
@@ -1213,6 +1223,7 @@ namespace MissionPlanner
 
             MenuFlightData.ForeColor = ThemeManager.TextColor;
             MenuFlightPlanner.ForeColor = ThemeManager.TextColor;
+            MenuFlightPlanner2.ForeColor = ThemeManager.TextColor;
             MenuInitConfig.ForeColor = ThemeManager.TextColor;
             MenuSimulation.ForeColor = ThemeManager.TextColor;
             MenuConfigTune.ForeColor = ThemeManager.TextColor;
@@ -1351,6 +1362,10 @@ namespace MissionPlanner
         private void MenuFlightPlanner_Click(object sender, EventArgs e)
         {
             MyView.ShowScreen("FlightPlanner");
+        }
+        private void MenuFlightPlanner2_Click(object sender, EventArgs e)
+        {
+            MyView.ShowScreen("FlightPlanner2");
         }
 
         public void MenuSetup_Click(object sender, EventArgs e)
@@ -1780,6 +1795,7 @@ namespace MissionPlanner
                     if (comPort.BaseStream.IsOpen)
                     {
                         MenuFlightPlanner_Click(null, null);
+                        MenuFlightPlanner2_Click(null, null);
                         FlightPlanner.BUT_read_Click(null, null);
                     }
                 }
@@ -3040,6 +3056,7 @@ namespace MissionPlanner
             MyView.AddScreen(new MainSwitcher.Screen("SWConfig", typeof(GCSViews.SoftwareConfig), false));
             MyView.AddScreen(new MainSwitcher.Screen("Simulation", Simulation, true));
             MyView.AddScreen(new MainSwitcher.Screen("Help", typeof(GCSViews.Help), false));
+            MyView.AddScreen(new MainSwitcher.Screen("FlightPlanner2", FlightPlanner2, true));
 
             // hide simulation under mono
             if (Program.MONO)
@@ -3071,7 +3088,9 @@ namespace MissionPlanner
             {
                 this.PerformLayout();
                 MenuFlightPlanner_Click(this, e);
+                MenuFlightPlanner2_Click(this, e);
                 MainMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(MenuFlightPlanner));
+                MainMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(MenuFlightPlanner2));
             }
             else
             {

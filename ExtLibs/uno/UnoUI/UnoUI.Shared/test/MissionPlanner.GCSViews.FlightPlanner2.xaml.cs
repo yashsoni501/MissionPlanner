@@ -1,0 +1,1 @@
+namespace MissionPlanner.GCSViews { public partial class FlightPlanner2{public FlightPlanner2(){this.InitializeComponent();}}}
