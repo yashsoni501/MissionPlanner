@@ -131,12 +131,13 @@ namespace MissionPlanner.GCSViews
         public GMapOverlay top;
         public GMapPolygon wppolygon;
         private GMapMarker CurrentMidLine;
-
+        private int missionAlt;
+        public Locationwp dest = new Locationwp();
 
         public void Init()
         {
             instance = this;
-
+            dest.alt = -1;  // setting dest alt invalid;
 
 
             // config map             
@@ -514,7 +515,7 @@ namespace MissionPlanner.GCSViews
             double z, object tag = null)
         {
             selectedrow = Commands.Rows.Add();
-
+            
             FillCommand(this.selectedrow, cmd, p1, p2, p3, p4, x, y, z, tag);
 
             writeKML();
@@ -1570,7 +1571,6 @@ namespace MissionPlanner.GCSViews
                         mBorders.Color = color.Value;
                     }
                 }
-
                 overlay.Markers.Add(m);
                 overlay.Markers.Add(mBorders);
             }
@@ -7372,6 +7372,80 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             MainMap.Position = MainV2.comPort.MAV.cs.HomeLocation;
             if (MainMap.Zoom < 17)
                 MainMap.Zoom = 17;
+        }
+
+        public void BUT_reset_HOME_Click(object sender, EventArgs e)
+        {
+            if (MainV2.comPort.MAV.cs.lat != 0)
+            {
+                TXT_homealt.Text = (MainV2.comPort.MAV.cs.altasl).ToString("0");
+                TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
+                TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();
+
+                writeKML();
+
+                zoomToHomeToolStripMenuItem_Click(null, null);
+            }
+            else
+            {
+                CustomMessageBox.Show(
+                    "Drone not connnected. Please connect the drone and click again on \"Reset Home\" button");
+            }
+        }
+
+        private void TXT_alt_TextChanged(object sender, EventArgs e)
+        {
+            if(TXT_alt.Text == "")
+            {
+                missionAlt = 0;
+                return;
+            }
+            missionAlt = (int)double.Parse(TXT_alt.Text);
+        }
+
+        private void BUT_mission_oneway_Click(object sender, EventArgs e)
+        {
+            var dr = CustomMessageBox.Show("Are you sure you want to upload the mission. Please check the final location carefully.", "warning", MessageBoxButtons.YesNo);
+
+            if (dr != (int)DialogResult.Yes)
+            {
+                return;
+            }
+
+            Locationwp home = new Locationwp();
+            try
+            {
+                home.frame = (byte)MAVLink.MAV_FRAME.GLOBAL;
+                home.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                home.lat = (double.Parse(TXT_homelat.Text));
+                home.lng = (double.Parse(TXT_homelng.Text));
+                home.alt = (float.Parse(TXT_homealt.Text) / CurrentState.multiplierdist); // use saved home
+            }
+            catch
+            {
+                CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
+                return;
+            }
+            if (missionAlt < 40)
+            {
+                CustomMessageBox.Show("Please enter height above 40 Meters", Strings.ERROR);
+                return;
+            }
+            /*if (dest.alt < 0)
+            {
+                CustomMessageBox.Show("Please enter the destination", Strings.ERROR);
+                return;
+            }*/
+            clearMissionToolStripMenuItem_Click(null, null);
+            AddWPToMap(home.lat, home.lng, (int)home.alt);
+            AddWPToMap(home.lat, home.lng, missionAlt);
+            AddWPToMap(dest.lat, dest.lng, missionAlt);
+            saveRallyPointsToolStripMenuItem_Click(null, null);
+        }
+
+        private void BUT_mission_return_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

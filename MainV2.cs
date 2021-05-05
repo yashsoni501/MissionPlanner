@@ -1366,6 +1366,7 @@ namespace MissionPlanner
         private void MenuFlightPlanner2_Click(object sender, EventArgs e)
         {
             MyView.ShowScreen("FlightPlanner2");
+            CustomMessageBox.Show("This is a simplified planner. Please enter the final location and flying height. Click on reset HOME to take your location from GPS.");
         }
 
         public void MenuSetup_Click(object sender, EventArgs e)
