@@ -7484,16 +7484,18 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
                 return;
             }
+            
             if (missionAlt < 40)
             {
                 CustomMessageBox.Show("Please enter height above 40 Meters", Strings.ERROR);
                 return;
             }
-            /*if (dest.alt < 0)
+            
+            if (dest.alt < 0)
             {
                 CustomMessageBox.Show("Please enter the destination", Strings.ERROR);
                 return;
-            }*/
+            }
             int zero = 1111;
             clearMissionToolStripMenuItem_Click(null, null);
             AddWPToMap(home.lat, home.lng, missionAlt, MAVLink.MAV_CMD.TAKEOFF);
@@ -7530,16 +7532,18 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
                 return;
             }
+            
             if (missionAlt < 40)
             {
                 CustomMessageBox.Show("Please enter height above 40 Meters", Strings.ERROR);
                 return;
             }
-            /*if (dest.alt < 0)
+            
+            if (dest.alt < 0)
             {
                 CustomMessageBox.Show("Please enter the destination", Strings.ERROR);
                 return;
-            }*/
+            }
             int zero = 1111;
             clearMissionToolStripMenuItem_Click(null, null);
             AddWPToMap(home.lat, home.lng, missionAlt, MAVLink.MAV_CMD.TAKEOFF);
@@ -7574,6 +7578,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 return;
             }
             dest.lng = double.Parse(DestLong.Text);
+            dest.alt = missionAlt;
         }
 
         private void BUT_reset_DEST_Click(object sender, EventArgs e)

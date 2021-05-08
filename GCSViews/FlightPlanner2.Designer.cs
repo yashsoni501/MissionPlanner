@@ -44,15 +44,15 @@ namespace MissionPlanner.GCSViews
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlightPlanner2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.label6 = new System.Windows.Forms.Label();
@@ -197,18 +197,18 @@ namespace MissionPlanner.GCSViews
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelBASE = new System.Windows.Forms.Panel();
             this.panelMap = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.lbl_homedist = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbl_prevdist = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.trackBar1 = new MissionPlanner.Controls.MyTrackBar();
+            this.DestLong = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lbl_distance = new System.Windows.Forms.Label();
+            this.DestLat = new System.Windows.Forms.TextBox();
             this.cmb_missiontype = new System.Windows.Forms.ComboBox();
             this.MainMap = new MissionPlanner.Controls.myGMAP();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.DestLong = new System.Windows.Forms.TextBox();
-            this.DestLat = new System.Windows.Forms.TextBox();
             this.Commands = new MissionPlanner.Controls.MyDataGridView();
             this.Command = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Param1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -250,8 +250,8 @@ namespace MissionPlanner.GCSViews
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.dataGridViewImageColumn1, "dataGridViewImageColumn1");
             this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
@@ -259,8 +259,8 @@ namespace MissionPlanner.GCSViews
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
             this.dataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn2.Image")));
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
@@ -913,12 +913,16 @@ namespace MissionPlanner.GCSViews
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.TXT_alt);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.BUT_mission_return);
             this.panel7.Controls.Add(this.BUT_reset_HOME);
+            this.panel7.Controls.Add(this.label10);
             this.panel7.Controls.Add(this.BUT_reset_DEST);
             this.panel7.Controls.Add(this.BUT_mission_oneway);
+            this.panel7.Controls.Add(this.DestLong);
+            this.panel7.Controls.Add(this.DestLat);
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             // 
@@ -1254,22 +1258,23 @@ namespace MissionPlanner.GCSViews
             // 
             // panelMap
             // 
-            this.panelMap.Controls.Add(this.label9);
             this.panelMap.Controls.Add(this.lbl_homedist);
             this.panelMap.Controls.Add(this.panel4);
             this.panelMap.Controls.Add(this.lbl_prevdist);
-            this.panelMap.Controls.Add(this.label10);
             this.panelMap.Controls.Add(this.trackBar1);
-            this.panelMap.Controls.Add(this.DestLong);
             this.panelMap.Controls.Add(this.label11);
             this.panelMap.Controls.Add(this.lbl_distance);
-            this.panelMap.Controls.Add(this.DestLat);
             this.panelMap.Controls.Add(this.cmb_missiontype);
             this.panelMap.Controls.Add(this.MainMap);
             resources.ApplyResources(this.panelMap, "panelMap");
             this.panelMap.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelMap.Name = "panelMap";
             this.panelMap.Resize += new System.EventHandler(this.panelMap_Resize);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
             // lbl_homedist
             // 
@@ -1286,6 +1291,11 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.lbl_prevdist, "lbl_prevdist");
             this.lbl_prevdist.Name = "lbl_prevdist";
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
             // trackBar1
             // 
             resources.ApplyResources(this.trackBar1, "trackBar1");
@@ -1299,6 +1309,12 @@ namespace MissionPlanner.GCSViews
             this.trackBar1.Value = 2F;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
+            // DestLong
+            // 
+            resources.ApplyResources(this.DestLong, "DestLong");
+            this.DestLong.Name = "DestLong";
+            this.DestLong.TextChanged += new System.EventHandler(this.DestLong_TextChanged);
+            // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
@@ -1308,6 +1324,12 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.lbl_distance, "lbl_distance");
             this.lbl_distance.Name = "lbl_distance";
+            // 
+            // DestLat
+            // 
+            resources.ApplyResources(this.DestLat, "DestLat");
+            this.DestLat.Name = "DestLat";
+            this.DestLat.TextChanged += new System.EventHandler(this.DestLat_TextChanged);
             // 
             // cmb_missiontype
             // 
@@ -1348,39 +1370,17 @@ namespace MissionPlanner.GCSViews
             this.MainMap.Zoom = 0D;
             this.MainMap.Paint += new System.Windows.Forms.PaintEventHandler(this.MainMap_Paint);
             // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // DestLong
-            // 
-            resources.ApplyResources(this.DestLong, "DestLong");
-            this.DestLong.Name = "DestLong";
-            this.DestLong.TextChanged += new System.EventHandler(this.DestLong_TextChanged);
-            // 
-            // DestLat
-            // 
-            resources.ApplyResources(this.DestLat, "DestLat");
-            this.DestLat.Name = "DestLat";
-            this.DestLat.TextChanged += new System.EventHandler(this.DestLat_TextChanged);
-            // 
             // Commands
             // 
             this.Commands.AllowUserToAddRows = false;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Commands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Commands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.Commands, "Commands");
             this.Commands.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Command,
@@ -1405,17 +1405,17 @@ namespace MissionPlanner.GCSViews
             this.AZ,
             this.TagData});
             this.Commands.Name = "Commands";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.Format = "N0";
-            dataGridViewCellStyle39.NullValue = "0";
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.Commands.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
-            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
-            this.Commands.RowsDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = "0";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Commands.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.Commands.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.Commands.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Commands_CellContentClick);
             this.Commands.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Commands_CellEndEdit);
             this.Commands.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Commands_DataError);
@@ -1428,9 +1428,9 @@ namespace MissionPlanner.GCSViews
             // 
             // Command
             // 
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.White;
-            this.Command.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.Command.DefaultCellStyle = dataGridViewCellStyle4;
             this.Command.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             resources.ApplyResources(this.Command, "Command");
             this.Command.Name = "Command";
@@ -1510,14 +1510,14 @@ namespace MissionPlanner.GCSViews
             // 
             // Up
             // 
-            this.Up.DefaultCellStyle = dataGridViewCellStyle37;
+            this.Up.DefaultCellStyle = dataGridViewCellStyle5;
             this.Up.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             resources.ApplyResources(this.Up, "Up");
             this.Up.Name = "Up";
             // 
             // Down
             // 
-            this.Down.DefaultCellStyle = dataGridViewCellStyle38;
+            this.Down.DefaultCellStyle = dataGridViewCellStyle6;
             this.Down.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             resources.ApplyResources(this.Down, "Down");
             this.Down.Name = "Down";
