@@ -1,4 +1,6 @@
-# MissionPlanner
+# MissionPlanner - Vaccine Delivery Drone in collaboration with ICMR and ARK (IIT Kharagpur)
+
+## This is a modified version of Mission Planner which has been customized to give commands to an MAV to drop a package attached to it with a gripper and return to the pickup location. The program accepts the gps coordinates of the drop location and the flying height as input and produces the necessary commandsto the flight-controller. This enables a non technical person to operate the drone to deliver the package.
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArduPilot/MissionPlanner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build status](https://ci.appveyor.com/api/projects/status/2c5tbxr2wvcguihp?svg=true)](https://ci.appveyor.com/project/meee1/missionplanner)
 
